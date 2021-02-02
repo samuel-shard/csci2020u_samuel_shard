@@ -1,0 +1,40 @@
+// Author: Michael Valdron
+// CSCI 2020U
+// This is an example of a starter 'build.gradle' file
+// Reference: https://docs.gradle.org/current/samples/sample_building_java_applications.html
+
+/* Plugins */
+// Reference: https://docs.gradle.org/current/userguide/java_plugin.html
+
+// apply plugin: 'java'
+// apply plugin: 'application'
+// ...
+// or
+plugins {
+	id 'java'
+	id 'application'
+	// ...
+}
+
+/* Repositories Block */
+// Reference: https://docs.gradle.org/current/userguide/declaring_dependencies.html
+
+repositories {
+	mavenCentral() // Uses the 'Maven Central' repository for fetching libraries
+	// ...
+}
+
+/* Dependencies Block */
+// Reference: https://docs.gradle.org/current/userguide/declaring_dependencies.html
+
+dependencies {
+	//implementation 'com.example.library' // Fetches library specified for main source code
+	// ...
+	testImplementation 'junit:junit:4.13' // Fetches library 'junit' for test source
+	// ...
+}
+
+/* Main Class Definition */
+application {
+	mainClassName = 'SimpleTest'
+}

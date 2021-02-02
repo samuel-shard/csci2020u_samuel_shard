@@ -1,0 +1,7 @@
+# Ignores files of varying extensions
+# Java class files
+*.class
+# gradle files
+*.jar
+# binary files
+*.bin
