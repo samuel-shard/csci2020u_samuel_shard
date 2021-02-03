@@ -1,7 +1,14 @@
 # Ignores files of varying extensions
 # Java class files
 *.class
+
 # gradle files
 *.jar
+*.build
+*.gradle
+
 # binary files
 *.bin
+
+# dataset files
+*.csv
