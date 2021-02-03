@@ -4,8 +4,8 @@
 
 # gradle files
 *.jar
-*build/
-*.gradle/
+**/build
+**.gradle
 
 # binary files
 *.bin
