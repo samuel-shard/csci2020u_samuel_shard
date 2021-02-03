@@ -1,0 +1,22 @@
+# Ignores files of varying extensions
+# Java class files
+*.class
+
+# gradle files
+*.jar
+**/build/**
+**/.gradle/**
+gradle/
+
+# gradle wrapper files
+gradlew
+gradew.bat
+
+# binary files
+*.bin
+
+# dataset files
+*.csv
+
+# ignore tar.gz
+*.tar.gz

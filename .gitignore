@@ -6,9 +6,17 @@
 *.jar
 **/build/**
 **/.gradle/**
+gradle/
+
+# gradle wrapper files
+gradlew
+gradew.bat
 
 # binary files
 *.bin
 
 # dataset files
 *.csv
+
+# ignore tar.gz files
+*.tar.gz
