@@ -21,4 +21,5 @@ gradew.bat
 # ignore tar.gz files
 *.tar.gz
 
+#ignore the proguard6.2.2 folder
 proguard*/**
