@@ -57,6 +57,16 @@ application {
 task (minify, dependsOn: 'jar', type: proguard.gradle.ProGuardTask) {
 	configuration 'proguard.cfg'
 	
-	injars'build/libs/lab03.jar'
-	outjars'build/libs/lab03.min.jar'
+	injars'build/libs/lab03-1.0.jar'
+	outjars'build/libs/lab03-1.0.min.jar'
+}
+
+sourceCompatibility = 11
+version = '1.0'
+jar{
+	manifest{
+		attributes	'Main-Class': 'CSVDemo',
+					'Implementation-Title': 'CSVDemo',
+					'Implementation-Version': version
+	}
 }
