@@ -65,7 +65,7 @@ sourceCompatibility = 11
 version = '1.0'
 jar{
 	manifest{
-		attributes	'Main-Class': 'CSVDemo',
+		attributes	'Main-Class': mainClassName,
 					'Implementation-Title': 'CSVDemo',
 					'Implementation-Version': version
 	}
