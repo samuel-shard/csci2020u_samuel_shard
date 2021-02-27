@@ -1,0 +1,3 @@
+# Ignores files of varying extensions
+# binary files
+*.bin
