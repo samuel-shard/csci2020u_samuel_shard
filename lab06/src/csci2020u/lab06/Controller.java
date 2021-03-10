@@ -39,6 +39,7 @@ public class Controller {
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
         drawPieChart(gc);
+        drawBarGraph(gc, 100, 450);
     }
 
     private void drawPieChart(GraphicsContext gc) {
@@ -57,6 +58,24 @@ public class Controller {
             // make width and height the same value or else you get an oval
             gc.fillArc(600.0, 150.0, 300.0, 300.0, startAngle, sweepAngle, ArcType.ROUND);
             startAngle += sweepAngle;
+        }
+    }
+
+    private void drawBarGraph(GraphicsContext gc, int startX, int y) {
+        double heightCom;
+        double heightHou;
+        int x = startX;
+        int width = 20;
+
+        for (int i = 0; i < avgCommercialPricesByYear.length; i++){
+            // get height of current commercial graph
+            heightCom = avgCommercialPricesByYear[i]/5000;
+            heightHou = avgHousingPricesByYear[i]/5000;
+            gc.setFill(Color.BLUE);
+            gc.fillRect(x, y-heightCom, width, heightCom);
+            gc.setFill(Color.RED);
+            gc.fillRect(x-20, y-heightHou, width, heightHou);
+            x += 50;
         }
     }
 }
