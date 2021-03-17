@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<AnchorPane fx:controller="csci2020u.lab05.StudInfoController"
+            xmlns:fx="http://javafx.com/fxml">
+    <TableView fx:id="tabView" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+               AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0">
+        <columns>
+            <TableColumn text="SID">
+                <cellValueFactory>
+                    <PropertyValueFactory property="studentId" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text = "Assignment"> <!--CHANGE THIS TO MULTIPLE CUMULATIVE ASSIGNMENT GRADES-->
+                <cellValueFactory><PropertyValueFactory property="assignmentGrade" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text ="Midterm">
+                <cellValueFactory>
+                    <PropertyValueFactory property="midtermGrade" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <!--<TableColumn fx:id="Final Exam">
+                <cellValueFactory>
+                    <PropertyValueFactory property="examGrade" />
+                </cellValueFactory>
+            </TableColumn>
+            -->
+
+            <TableColumn text="Final Mark">
+                <cellValueFactory>
+                    <PropertyValueFactory property="finalGrade" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="Letter Grade">
+                <cellValueFactory>
+                    <PropertyValueFactory property="letterGrade" />
+                </cellValueFactory>
+            </TableColumn>
+
+        </columns>
+    </TableView>
+
+</AnchorPane>
