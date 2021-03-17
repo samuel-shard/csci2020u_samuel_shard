@@ -14,11 +14,5 @@
 <AnchorPane fx:controller="csci2020u.lab07.Controller"
             xmlns:fx="http://javafx.com/fxml">
 
-    <Label text = "Max Fine:" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" />
-    <Label fx:id="maxFine" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="80" />
-
-    <Label text = "Min Fine:" AnchorPane.topAnchor="30" AnchorPane.leftAnchor="10" />
-    <Label fx:id="minFine" AnchorPane.topAnchor="30" AnchorPane.leftAnchor="65" />
-
     <Canvas fx:id="canvas" width="1000" height="600"/>
 </AnchorPane>
