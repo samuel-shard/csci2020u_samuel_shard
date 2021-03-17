@@ -20,5 +20,5 @@
     <Label text = "Min Fine:" AnchorPane.topAnchor="30" AnchorPane.leftAnchor="10" />
     <Label fx:id="minFine" AnchorPane.topAnchor="30" AnchorPane.leftAnchor="65" />
 
-    <!-- <Canvas fx:id="canvas" width="1000" height="600"/> -->
+    <Canvas fx:id="canvas" width="1000" height="600"/>
 </AnchorPane>

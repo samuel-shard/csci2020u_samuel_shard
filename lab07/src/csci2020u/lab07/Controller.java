@@ -15,92 +15,80 @@ import java.util.Map;
 
 public class Controller {
 
-    @FXML
-    private Label maxFine;
-    @FXML
-    private Label minFine;
+    private static ArrayList<Integer> stormTypeCountList = new  ArrayList<Integer>();
 
-    /*// Part 1 Bar Chart
-    private static final double[] avgHousingPricesByYear = {
-            247381.0,264171.4,287715.3,294736.1,
-            308431.4,322635.9,340253.0,363153.7
-    };
-    private static final double[] avgCommercialPricesByYear = {
-            1121585.3,1219479.5,1246354.2,1295364.8,
-            1335932.6,1472362.0,1583521.9,1613246.3
-    };
+    private static ArrayList<String> stormTypeList = new  ArrayList<String>();
+
 
     // Part 2 Pie Chart
-    private static final String[] ageGroups = {
-            "18-25", "26-35", "36-45", "46-55", "56-65", "65+"
-    };
-    private static final int[] purchasesByAgeGroup = {
-            648, 1021, 2453, 3173, 1868, 2247
-    };
     private static final Color[] pieColours = {
             Color.AQUA, Color.GOLD, Color.DARKORANGE,
             Color.DARKSALMON, Color.LAWNGREEN, Color.PLUM
     };
 
     @FXML
-    private Canvas canvas; */
+    private Canvas canvas;
 
     @FXML
     private void initialize() {
-        //GraphicsContext gc = canvas.getGraphicsContext2D();
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        drawPieChart(gc);
 
-        //drawPieChart(gc);
-
-        Map<String, List<Integer>> fineAmountsCol = readCSV("Parking_Tags_Data_2014_4.csv", 4);
-        if (fineAmountsCol.containsKey("set_fine_amount")) {
-            List<Integer> fineAmounts = fineAmountsCol.get("set_fine_amount");
-            int maxFine = Integer.MIN_VALUE;
-            int minFine = Integer.MAX_VALUE; //make sure minFine is initialized to a big value so it is overwritten
-
-            for (int fine : fineAmounts) {
-                if (fine > maxFine) {
-                    maxFine = fine;
-                }
-                if (fine < minFine) {
-                    minFine = fine;
-                }
-            }
-
-            System.out.printf("Max Fine: %d\n", maxFine);
-            System.out.printf("Min Fine: %d\n", minFine);
-
-            this.maxFine.setText(Integer.toString(maxFine));
-            this.minFine.setText(Integer.toString(minFine));
-
-
-        }
     }
 
-    /*private void drawPieChart(GraphicsContext gc) {
-        int totalPurchasesByAgeGroup = 0;
-        for (int purchaseByAge: purchasesByAgeGroup){
-            totalPurchasesByAgeGroup += purchaseByAge;
+    private void drawPieChart(GraphicsContext gc) {
+
+        // MUST PUT stormTypeList AND stormTypeCountList CREATION IN drawPieChart FUNCTION!!!
+        // OR ELSE FUNCTION DOES NOT WORK!!! (NO ERROR, IT JUST DOES NOTHING.)
+        Map<String, Integer> stormTypeCol = readCSV("weatherwarnings-2015.csv", 5);
+        System.out.println(stormTypeCol);
+
+        for(Map.Entry<String,Integer> entry : stormTypeCol.entrySet()){
+            stormTypeList.add(entry.getKey());
+            stormTypeCountList.add(entry.getValue());
+        }
+        System.out.println("stormTypeList: " + stormTypeList);
+        System.out.println("stormTypeCountList: " + stormTypeCountList);
+        System.out.println("stormTypeCountList.size(): " + stormTypeCountList.size());
+
+        int totalStorms = 0;
+        System.out.println("totalstorms: " + totalStorms);
+
+        for (int i = 0; i < stormTypeCountList.size(); i++){
+            totalStorms += stormTypeCountList.get(i);
         }
 
+        System.out.println("stormTypeCountList.size(): " + stormTypeCountList.size());
+        System.out.println("totalstorms: " + totalStorms);
+
         double startAngle = 0.0;
-        for (int i = 0; i < purchasesByAgeGroup.length; i++){
+        int legendIncrement = 0;
+        for (int i = 0; i < stormTypeCountList.size(); i++){
             // get percentage of purchases by each age group
-            double slicePercentage = (double)purchasesByAgeGroup[i] / totalPurchasesByAgeGroup;
+            double slicePercentage = (double) stormTypeCountList.get(i) / totalStorms;
             double sweepAngle = slicePercentage * 360.0;
+            System.out.println("sweepAngle: " + sweepAngle);
 
             gc.setFill(pieColours[i]);
             // make width and height the same value or else you get an oval
             gc.fillArc(600.0, 150.0, 300.0, 300.0, startAngle, sweepAngle, ArcType.ROUND);
+            gc.fillRect(50.0, 150.0+legendIncrement, 100.0, 40.0);
+
+            gc.setFill(Color.BLACK);
+            gc.strokeArc(600.0, 150.0, 300.0, 300.0, startAngle, sweepAngle, ArcType.ROUND);
             startAngle += sweepAngle;
+            gc.strokeRect(50.0, 150.0+legendIncrement, 100.0, 40.0);
+            gc.strokeText(stormTypeList.get(i), 160, 180 +legendIncrement);
+            legendIncrement += 50;
         }
-    }*/
+    }
 
     //Lab 07 Code for parsing through file and returning frequency map
-    private Map<String, List<Integer>> readCSV(String filename, int columnIndex) {
+    private Map<String, Integer> readCSV(String filename, int columnIndex) {
         File currentWorkingDirectory = new File(".");
         File inFile = new File(currentWorkingDirectory, filename);
-        Map<String, List<Integer>> result = new HashMap<>();
-        List<Integer> fineAmounts = new ArrayList<>();
+        Map<String, Integer> result = new HashMap<>();
+        List<String> fineAmounts = new ArrayList<>();
         String label;
 
         try {
@@ -114,20 +102,24 @@ public class Controller {
 
                 while ((line = rdr.readLine()) != null) {
                     cells = line.split(",");
-                    fineAmounts.add(Integer.parseInt(cells[columnIndex]));
-                }
+                    fineAmounts.add(cells[columnIndex]);
 
-                result.put(label, fineAmounts);
+                    if (result.containsKey(cells[columnIndex])){
+                        result.put(cells[columnIndex], result.get(cells[columnIndex]) + 1);
+
+                    }else{
+                        result.put(cells[columnIndex], 1);
+                    }
+                }
             }
             else{
                 System.err.printf("File '%s' was not found.\n", inFile.getAbsolutePath());
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (NumberFormatException nfe){
-            System.err.printf("Invalid number in data: '%s'.\n", nfe.getMessage());
         }
 
         return result;
     }
+
 }
