@@ -16,7 +16,7 @@
                 </cellValueFactory>
             </TableColumn>
 
-            <TableColumn text = "Assignment"> <!--CHANGE THIS TO MULTIPLE CUMULATIVE ASSIGNMENT GRADES-->
+            <TableColumn text = "Assignments">
                 <cellValueFactory><PropertyValueFactory property="assignmentGrade" />
                 </cellValueFactory>
             </TableColumn>
@@ -27,12 +27,12 @@
                 </cellValueFactory>
             </TableColumn>
 
-            <!--<TableColumn fx:id="Final Exam">
+            <TableColumn text="Final Exam">
                 <cellValueFactory>
                     <PropertyValueFactory property="examGrade" />
                 </cellValueFactory>
             </TableColumn>
-            -->
+
 
             <TableColumn text="Final Mark">
                 <cellValueFactory>

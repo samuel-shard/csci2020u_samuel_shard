@@ -1,4 +1,4 @@
-package csci2020u.lab05;
+package csci2020u.lab08;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +13,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("studinfo.fxml"));
-        primaryStage.setTitle("Module 4 - Example 2");
+        primaryStage.setTitle("Lab 08 - Loading and Saving Files");
         primaryStage.setScene(new Scene(root, 500, 400));
         primaryStage.show();
     }

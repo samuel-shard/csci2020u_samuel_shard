@@ -1,3 +1,5 @@
 # Ignores files of varying extensions
 # binary files
 *.bin
+#output files
+*out

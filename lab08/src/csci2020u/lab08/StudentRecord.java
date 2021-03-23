@@ -1,4 +1,4 @@
-package csci2020u.lab05;
+package csci2020u.lab08;
 
 public class StudentRecord {
     private final String studId;

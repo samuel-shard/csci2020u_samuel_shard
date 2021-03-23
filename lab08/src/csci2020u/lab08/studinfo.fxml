@@ -5,10 +5,29 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.control.cell.PropertyValueFactory?>
-<AnchorPane fx:controller="csci2020u.lab05.StudInfoController"
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Menu?>
+
+<AnchorPane fx:controller="csci2020u.lab08.StudInfoController"
             xmlns:fx="http://javafx.com/fxml">
+    <MenuBar AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+        <Menu text="File">
+            <MenuItem fx:id="mnuNew" text="New" onAction="#onNewClick"/>
+            <MenuItem fx:id="mnuOpen" text="Open" onAction="#onOpenClick" />
+            <MenuItem fx:id="mnuSave" text="Save" onAction="#onSaveClick"/>
+            <MenuItem fx:id="mnuSaveAs" text="Save As" onAction="#onSaveAsClick"/>
+            <MenuItem fx:id="mnuExit" text="Exit" onAction="#onExitClick"/>
+        </Menu>
+    </MenuBar>
+
+    <!--  <TextArea fx:id="txtContent" AnchorPane.topAnchor="30" AnchorPane.leftAnchor="10"
+              AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10"
+    style="-fx-font-family: Consolas; -fx-font-size: 14pt;"/>  -->
+
+    <!-- from lab 5: -->
     <TableView fx:id="tabView" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
-               AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0">
+               AnchorPane.topAnchor="25" AnchorPane.bottomAnchor="0">
         <columns>
             <TableColumn text="SID">
                 <cellValueFactory>
@@ -16,7 +35,7 @@
                 </cellValueFactory>
             </TableColumn>
 
-            <TableColumn text = "Assignment"> <!--CHANGE THIS TO MULTIPLE CUMULATIVE ASSIGNMENT GRADES-->
+            <TableColumn text = "Assignments">
                 <cellValueFactory><PropertyValueFactory property="assignmentGrade" />
                 </cellValueFactory>
             </TableColumn>
@@ -27,12 +46,12 @@
                 </cellValueFactory>
             </TableColumn>
 
-            <!--<TableColumn fx:id="Final Exam">
+            <TableColumn text="Final Exam">
                 <cellValueFactory>
                     <PropertyValueFactory property="examGrade" />
                 </cellValueFactory>
             </TableColumn>
-            -->
+
 
             <TableColumn text="Final Mark">
                 <cellValueFactory>
@@ -48,5 +67,4 @@
 
         </columns>
     </TableView>
-
 </AnchorPane>

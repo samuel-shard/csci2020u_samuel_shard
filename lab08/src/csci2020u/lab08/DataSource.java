@@ -1,4 +1,4 @@
-package csci2020u.lab05;
+package csci2020u.lab08;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

@@ -9,7 +9,7 @@ public class StudentRecord {
     private final float finalGrade;
     private final char letterGrade;
 
-    public StudentRecord(String studId, float assignGrade, float examGrade, float midtermGrade) {
+    public StudentRecord(String studId, float assignGrade, float midtermGrade, float examGrade) {
         this.studId = studId;
         //this.studName = studName;
         this.assignGrade = assignGrade;
@@ -32,13 +32,6 @@ public class StudentRecord {
     public String getStudentId() {
         return studId;
     }
-    //public void setStudentId(String newId) {
-    //    studId = newId;
-    //}
-
-    //public String getStudentName() {
-    //    return studName;
-    //}
 
     public float getAssignmentGrade() {
         return assignGrade;
