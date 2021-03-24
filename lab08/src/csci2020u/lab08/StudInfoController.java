@@ -87,6 +87,7 @@ public class StudInfoController {
                         lines.append(line);
                         lines.append("\n");
                     }
+                    rdr.close(); //close reader to avoid wasted memory
                     String csvData = lines.toString();
                     String[] rows = csvData.split("\n");
 
@@ -141,8 +142,7 @@ public class StudInfoController {
                     lines.append(tabItems.get(i).getMidtermGrade() + ",");
                     lines.append(tabItems.get(i).getExamGrade() + "\n");
                 }
-                //System.out.println("Lines: " + lines);
-
+                //System.out.println("Lines: \n" + lines);
                 wtr.println(lines);
                 wtr.close();
 
