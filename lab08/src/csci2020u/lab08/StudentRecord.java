@@ -18,11 +18,11 @@ public class StudentRecord {
         this.finalGrade = (float) (0.2*assignGrade + 0.3*midtermGrade +0.5*examGrade);
         if (this.finalGrade >= 80 && this.finalGrade <= 100){
             this.letterGrade = 'A';
-        }else if (this.finalGrade >= 70 && this.finalGrade <= 79){
+        }else if (this.finalGrade >= 70 && this.finalGrade < 80){
             this.letterGrade = 'B';
-        }else if (this.finalGrade >= 60 && this.finalGrade <= 69){
+        }else if (this.finalGrade >= 60 && this.finalGrade < 70){
             this.letterGrade = 'C';
-        }else if (this.finalGrade >= 50 && this.finalGrade <= 59){
+        }else if (this.finalGrade >= 50 && this.finalGrade < 60){
             this.letterGrade = 'D';
         }else{
             this.letterGrade = 'F';
