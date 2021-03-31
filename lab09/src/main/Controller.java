@@ -104,16 +104,16 @@ public class Controller {
         }else{
             yMultiple = (float) yMultiple1;
         }
-        plotLine(gc, stock1, stock2, xMultiple, yMultiple);
+        gc.setStroke(Color.RED);
+        plotLine(gc, stock1, xMultiple, yMultiple);
+        gc.setStroke(Color.BLUE);
+        plotLine(gc, stock2, xMultiple, yMultiple);
 
     }
 
-    public void plotLine(GraphicsContext gc, ArrayList<Float> stock1, ArrayList<Float> stock2, float xMultiple, float yMultiple){
-        for (int i = 0; i < stock1.size() - 1; i++){
-            gc.setStroke(Color.RED);
-            gc.strokeLine(i*xMultiple+50, 550-(stock1.get(i)*yMultiple), (i+1)*xMultiple+50, 550-(stock1.get(i+1)*yMultiple));
-            gc.setStroke(Color.BLUE);
-            gc.strokeLine(i*xMultiple+50, 550-(stock2.get(i)*yMultiple), (i+1)*xMultiple+50, 550-(stock2.get(i+1)*yMultiple));
+    public void plotLine(GraphicsContext gc, ArrayList<Float> stock, float xMultiple, float yMultiple){
+        for (int i = 0; i < stock.size() - 1; i++){
+            gc.strokeLine(i*xMultiple+50, 550-(stock.get(i)*yMultiple), (i+1)*xMultiple+50, 550-(stock.get(i+1)*yMultiple));
         }
 
     }
