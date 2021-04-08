@@ -4,12 +4,13 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 public class ServerController {
     @FXML
-    private Text actiontarget;
+    TextArea board;
 
     @FXML
     private void onExitClick(ActionEvent actionEvent) {
@@ -17,6 +18,4 @@ public class ServerController {
         //actiontarget.setText("Exit button pressed");
         Platform.exit();
     }
-
-
 }

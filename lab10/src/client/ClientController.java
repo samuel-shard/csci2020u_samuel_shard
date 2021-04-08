@@ -19,12 +19,15 @@ public class ClientController {
     private TextField message;
 
     @FXML
+    private TextField username;
+
+    @FXML
     private void onSendClick(ActionEvent actionEvent) {
         try {
             MessageClient mc = new MessageClient("localhost", 8001);
             System.out.println("Send Button Clicked");
             actiontarget.setText("Send button pressed");
-            mc.sendMessage(message.getText());
+            mc.sendMessage(username.getText() + ": " + message.getText());
             System.out.println("message: " + message.getText());
 
         } catch (IOException e) {
